@@ -1,16 +1,16 @@
 package su.kas.blog.web;
 
-import java.util.List;
-
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.reactive.result.view.Rendering;
-
-import lombok.AllArgsConstructor;
 import su.kas.blog.model.Author;
 import su.kas.blog.service.AuthorService;
+import su.kas.blog.web.exception.ResourceNotFoundException;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/authors")
@@ -20,17 +20,15 @@ public class AuthorController {
     private final AuthorService authorService;
 
     @GetMapping("/{id}")
-    public Rendering findAuthor(@PathVariable long id) {
-        Author author = authorService.findById(id).orElseThrow(() -> new RuntimeException("Author not found"));
-        return Rendering
-                .view("author")
-                .modelAttribute("author", author)
-                .modelAttribute("posts", authorService.findPosts(author))
-                .build();
+    public String findAuthor(@PathVariable long id, Model model) {
+        Author author = authorService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author not found"));
+        model.addAttribute("author", author);
+        model.addAttribute("posts", authorService.findPosts(author));
+        return "author";
     }
 
     @GetMapping("/")
-    public List<Author> findAll(){
+    public List<Author> findAll() {
         return authorService.findAll();
     }
 }

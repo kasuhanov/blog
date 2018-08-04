@@ -1,11 +1,10 @@
 package su.kas.blog.web;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.reactive.result.view.Rendering;
-
-import lombok.AllArgsConstructor;
 import su.kas.blog.service.AuthorService;
 import su.kas.blog.service.PostService;
 
@@ -14,15 +13,12 @@ import su.kas.blog.service.PostService;
 @RequestMapping("/")
 @AllArgsConstructor
 public class MainController {
-	private final AuthorService authorService;
-	private final PostService postService;
+    private final AuthorService authorService;
+    private final PostService postService;
 
-	@GetMapping("/")
-	public Rendering home() {
-		return Rendering
-				.view("index")
-//                .modelAttribute("authors", authorService.findAll())
-				.modelAttribute("posts", postService.findAll())
-				.build();
-	}
+    @GetMapping("/")
+    public String home(Model model) {
+        model.addAttribute("posts", postService.findAll());
+        return "index";
+    }
 }
