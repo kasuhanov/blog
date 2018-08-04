@@ -1,0 +1,27 @@
+{{>layout/header}}
+<body>
+{{#post}}
+    <section class="hero is-primary is-bold">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">
+                    {{header}}
+                </h1>
+                <p>posted at {{time}} by <!-- 'dd.MM.yyyy HH:mm' -->
+                    <a class="is_link" href="/authors/{{author.id}}"><b>{{author.name}}</b></a>
+                </p>
+            </div>
+        </div>
+    </section>
+    <section class="section">
+        <div class="container">
+
+            <div class="content">
+                {{content}}
+            </div>
+
+        </div>
+    </section>
+{{/post}}
+</body>
+{{>layout/footer}}

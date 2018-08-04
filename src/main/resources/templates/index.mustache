@@ -1,0 +1,40 @@
+{{>layout/header}}
+<body>
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                <i class="fa fa-bolt" aria-hidden="true"></i>
+            </h1>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="content">
+            <h2>Receiving power data for Posts:</h2>
+            <table>
+                <thead>
+                <tr>
+                    <th>Post ID</th>
+                    <th>Post header</th>
+                    <th>Post author</th>
+                    <th>Links</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#posts}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{header}}</td>
+                        <td>{{author.name}}</td>
+                        <td><a class="button is-link" href="/posts/{{id}}">Show</a></td>
+                    </tr>
+                {{/posts}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+{{>layout/footer}}

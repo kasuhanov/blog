@@ -27,7 +27,7 @@ repositories {
 
 dependencies {
     compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.springframework.boot:spring-boot-starter-thymeleaf')
+    compile('org.springframework.boot:spring-boot-starter-mustache')
     compile('org.springframework.boot:spring-boot-starter-web')
     compile('org.springframework.boot:spring-boot-devtools')
     runtime('org.webjars.npm:bulma:0.6.0')
@@ -35,6 +35,5 @@ dependencies {
     runtime('org.postgresql:postgresql')
     compileOnly('org.projectlombok:lombok')
     testCompile('org.springframework.boot:spring-boot-starter-test')
-    testCompile('io.projectreactor:reactor-test')
     testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }

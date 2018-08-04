@@ -1,0 +1,39 @@
+{{>layout/header}}
+<body>
+<section class="hero is-primary is-bold">
+    <div class="hero-body">
+        <div class="container">
+            <h1 class="title">
+                {{author.name}}
+            </h1>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+        <div class="content">
+            <table>
+                <thead>
+                <tr>
+                    <th>Post ID</th>
+                    <th>Post header</th>
+                    <th>Post author</th>
+                    <th>Links</th>
+                </tr>
+                </thead>
+                <tbody>
+                {{#posts}}
+                    <tr>
+                        <td>{{id}}</td>
+                        <td>{{header}}</td>
+                        <td>{{author.name}}</td>
+                        <td><a class="button is-link" href="/posts/{{id}}">Show</a></td>
+                    </tr>
+                {{/posts}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+</body>
+{{>layout/footer}}
