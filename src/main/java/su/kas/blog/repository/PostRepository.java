@@ -11,5 +11,6 @@ import java.util.List;
 @Repository
 @Transactional
 public interface PostRepository extends JpaRepository<Post, Long> {
-    List<Post> findByAuthor(Author author);
+    List<Post> findByAuthorOrderByDateTimeDesc(Author author);
+    List<Post> findAllByOrderByDateTimeDesc();
 }

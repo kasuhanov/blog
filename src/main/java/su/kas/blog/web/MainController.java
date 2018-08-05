@@ -18,7 +18,7 @@ public class MainController {
 
     @GetMapping("/")
     public String home(Model model) {
-        model.addAttribute("posts", postService.findAll());
+        model.addAttribute("posts", postService.findAllOrderByDateTimeDesc());
         return "index";
     }
 }

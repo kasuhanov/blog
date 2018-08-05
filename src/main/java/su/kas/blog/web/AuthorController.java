@@ -23,7 +23,7 @@ public class AuthorController {
     public String findAuthor(@PathVariable long id, Model model) {
         Author author = authorService.findById(id).orElseThrow(() -> new ResourceNotFoundException("Author not found"));
         model.addAttribute("author", author);
-        model.addAttribute("posts", authorService.findPosts(author));
+        model.addAttribute("posts", authorService.findPostsOrderByDateTimeDesc(author));
         return "author";
     }
 

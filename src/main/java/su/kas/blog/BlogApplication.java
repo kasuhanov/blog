@@ -26,7 +26,7 @@ public class BlogApplication {
                 author.setName("kasuhanov");
                 authorRepository.save(author);
                 Post post = new Post();
-                post.setTime(LocalDateTime.now());
+                post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum");
                 post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
@@ -34,7 +34,7 @@ public class BlogApplication {
                 postRepository.save(post);
 
                 post = new Post();
-                post.setTime(LocalDateTime.now());
+                post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum2");
                 post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
@@ -42,7 +42,7 @@ public class BlogApplication {
                 postRepository.save(post);
 
                 post = new Post();
-                post.setTime(LocalDateTime.now());
+                post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum3");
                 post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
@@ -50,7 +50,7 @@ public class BlogApplication {
                 postRepository.save(post);
 
                 post = new Post();
-                post.setTime(LocalDateTime.now());
+                post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum4");
                 post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");

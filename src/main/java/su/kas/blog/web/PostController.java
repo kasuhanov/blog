@@ -23,7 +23,7 @@ public class PostController {
         Post post = postService.findById(id)
                 .orElseThrow(() -> new ResourceNotFoundException("Post with id " + id + " not found"));
         model.addAttribute("post", post);
-        model.addAttribute("formattedTime", post.getTime().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")));
+        model.addAttribute("formattedTime", post.getDateTime().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")));
         return "post";
     }
 }

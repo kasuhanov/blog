@@ -17,7 +17,7 @@ public class Post {
     private String content;
     @Column(length = 10000)
     private String header;
-    private LocalDateTime time;
+    private LocalDateTime dateTime;
     @ManyToOne
     @JoinColumn(name = "author_id", nullable = false)
     private Author author;

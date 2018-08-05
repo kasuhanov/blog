@@ -27,7 +27,7 @@ public class AuthorService {
         return authorRepository.findAll();
     }
 
-    public List<Post> findPosts(Author author) {
-        return postRepository.findByAuthor(author);
+    public List<Post> findPostsOrderByDateTimeDesc(Author author) {
+        return postRepository.findByAuthorOrderByDateTimeDesc(author);
     }
 }
