@@ -1,5 +1,6 @@
 package su.kas.blog;
 
+import com.samskivert.mustache.Mustache;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -19,6 +20,13 @@ public class BlogApplication {
     }
 
     @Bean
+    public Mustache.Compiler mustacheCompiler(Mustache.TemplateLoader loader) {
+        return Mustache.compiler()
+                .escapeHTML(false)
+                .withLoader(loader);
+    }
+
+    @Bean
     public CommandLineRunner clr(final AuthorRepository authorRepository, final PostRepository postRepository) {
         return args -> {
             if (!authorRepository.existsByName("kasuhanov")) {
@@ -28,15 +36,16 @@ public class BlogApplication {
                 Post post = new Post();
                 post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum");
-                post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
-                        " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
+                post.setContent("**Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do" +
+                        " eiusmod tempor incididunt ut labore et dolore magna aliqua." +
+                        " http://localhost:8080/");
                 post.setAuthor(author);
                 postRepository.save(post);
 
                 post = new Post();
                 post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum2");
-                post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
+                post.setContent("**Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 post.setAuthor(author);
                 postRepository.save(post);
@@ -44,7 +53,7 @@ public class BlogApplication {
                 post = new Post();
                 post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum3");
-                post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
+                post.setContent("**Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 post.setAuthor(author);
                 postRepository.save(post);
@@ -52,7 +61,7 @@ public class BlogApplication {
                 post = new Post();
                 post.setDateTime(LocalDateTime.now());
                 post.setHeader("Lorem ipsum4");
-                post.setContent("<b>Lorem ipsum</b> dolor sit amet, consectetur adipiscing elit, sed do" +
+                post.setContent("**Lorem ipsum** dolor sit amet, consectetur adipiscing elit, sed do" +
                         " eiusmod tempor incididunt ut labore et dolore magna aliqua.");
                 post.setAuthor(author);
                 postRepository.save(post);

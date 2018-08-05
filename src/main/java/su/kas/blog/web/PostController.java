@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import su.kas.blog.model.Post;
 import su.kas.blog.service.PostService;
+import su.kas.blog.util.MarkdownConverter;
 import su.kas.blog.web.exception.ResourceNotFoundException;
 
 import java.time.format.DateTimeFormatter;
@@ -21,6 +22,11 @@ public class PostController {
     @GetMapping("/{id}")
     public String home(@PathVariable long id, Model model) {
         Post post = postService.findById(id)
+                .map(p -> {
+                    p.setContent(MarkdownConverter.convert(p.getContent()));
+                    p.setHeader(MarkdownConverter.convert(p.getHeader()));
+                    return p;
+                })
                 .orElseThrow(() -> new ResourceNotFoundException("Post with id " + id + " not found"));
         model.addAttribute("post", post);
         model.addAttribute("formattedTime", post.getDateTime().format(DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm")));
